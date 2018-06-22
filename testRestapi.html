@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl"> 
+
+<p>Today's welcome message is:</p>
+
+<h1>ID:{{id}}</h1>
+<h1>Name:{{name}}</h1>
+<h1>Latitude:{{latitude}}</h1>
+<h1>Longitude:{{longitude}}</h1>
+<h1>{{response}}</h1>
+<input type="text" ng-model="channelinput"/>
+<button ng-click="getChannelInfo()">Submit</button>
+</div>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $http) {
+$scope.getChannelInfo=function(){
+debugger;
+  $http.get("https://gentle-bobcat-11.localtunnel.me/Tasks/2")
+  .then(function(response) {
+  $scope.response=response;
+  alert(response);
+   // $scope.id = response.data.channel.id;
+    //$scope.name = response.data.channel.name;
+    //$scope.latitude = response.data.channel.latitude;
+    //$scope.longitude = response.data.channel.longitude;
+      
+      
+  });
+}
+
+});
+</script>
+
+</body>
+</html>
